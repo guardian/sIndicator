@@ -1,0 +1,38 @@
+#gu--sindicator-bubble {
+    position: fixed;
+    bottom: 120px;
+    right: 15px;
+    z-index: 79999;
+    overflow: hidden;
+    padding: 10px;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    font-family: Georgia, serif;
+    cursor: default;
+    text-align: center;
+}
+
+#gu--sindicator-bubble.bubble-unknown {
+    border-radius: 99px;
+    background-color: black;
+    width: 40px;
+    height: 40px;
+    /* display: none; */
+}
+
+#gu--sindicator-bubble.bubble-syndicatable {
+    background-color: green;
+    border-radius: 7px;
+}
+
+#gu--sindicator-bubble.bubble-not-syndicatable {
+    background-color: red;
+    border-radius: 7px;
+}
+
+#gu--sindicator-bubble.bubble-error {
+    border-radius: 7px;
+    background-color: yellow;
+    color: black;
+}
