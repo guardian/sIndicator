@@ -6,14 +6,14 @@
     "description": "Indicates whether an article on theguardian.com is available for syndication.",
 
     "icons": {
-	"42": "gu-roundel.png"
+	"42": "dist/gu-roundel.png"
     },
 
     "content_scripts": [
 	{
 	    "matches": ["*://*.theguardian.com/*"],
-	    "css": ["style.css"],
-	    "js": ["sindicator.js"]
+	    "css": ["dist/style.css"],
+	    "js": ["dist/sindicator.js"]
 	}
     ],
     "options_ui": {
