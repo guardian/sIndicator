@@ -1,26 +1,29 @@
 {
-    "manifest_version": 2,
-    "name": "sIndicator",
-    "version": "1.0",
+  "manifest_version": 2,
+  "name": "sIndicator",
+  "version": "1.0.1",
 
-    "description": "Indicates whether an article on theguardian.com is available for syndication.",
+  "description": "Indicates whether an article on theguardian.com is available for syndication.",
 
-    "icons": {
-	"42": "dist/gu-roundel.png"
-    },
+  "icons": {
+    "42": "dist/gu-roundel.png"
+  },
 
-    "content_scripts": [
-	{
-	    "matches": ["*://*.theguardian.com/*"],
-	    "css": ["dist/style.css"],
-	    "js": ["dist/sindicator.js"]
-	}
-    ],
-    "options_ui": {
-	"page": "options.html"
-    },
-    "permissions": [
-	"storage",
-	"*://content.guardianapis.com/*"
-    ]
+  "content_scripts": [
+    {
+      "matches": ["*://*.theguardian.com/*"],
+      "css": ["dist/style.css"],
+      "js": ["dist/sindicator.js"]
+    }
+  ],
+  "options_ui": {
+    "page": "options.html"
+  },
+  "permissions": ["storage", "*://content.guardianapis.com/*"],
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "{342b8a2d-3199-4133-9b52-7bf670dbbf9a}",
+      "strict_min_version": "58.0"
+    }
+  }
 }

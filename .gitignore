@@ -1,2 +1,4 @@
 node_modules
 dist
+.amo-upload-uuid
+.web-extension-id
