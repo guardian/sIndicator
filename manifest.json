@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "sIndicator",
-  "version": "1.0.1",
+  "version": "1.0.2",
 
   "description": "Indicates whether an article on theguardian.com is available for syndication.",
 
@@ -17,7 +17,7 @@
     }
   ],
   "options_ui": {
-    "page": "options.html"
+    "page": "dist/options.html"
   },
   "permissions": ["storage", "*://content.guardianapis.com/*"],
   "browser_specific_settings": {
