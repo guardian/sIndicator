@@ -42,7 +42,7 @@ jobs:
       run: web-ext sign --api-key=$WEB_EXT_API_KEY --api-secret=$WEB_EXT_API_SECRET
 
     - name: Upload signed extension
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v3
       with:
         name: signed-extension
         path: web-ext-artifacts/*.xpi
