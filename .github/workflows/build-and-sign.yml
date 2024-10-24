@@ -3,7 +3,7 @@ name: Build and Sign Web Extension
 on:
   push:
     branches:
-      - main # merge
+      - main
 
 jobs:
   build-and-sign:

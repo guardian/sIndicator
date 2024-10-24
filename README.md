@@ -31,3 +31,4 @@ A zip file containing the signed xpi can be accessed from the Artifacts for the 
 9. Add your api key
 10. Now when you navigate to a page on www.theguardian.com a bubble will appear indicating whether or not the page is syndicatable
 
+Note that more sophisticated installation methods are possible and may be considered in the future.
