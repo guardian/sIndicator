@@ -5,6 +5,7 @@
         "web-ext-types": "^3.2.1"
     },
     "scripts": {
+        "preinstall": "node -e \"if (process.env.npm_execpath.indexOf('yarn') === -1) { console.error('\\x1b[31mERROR: Please use Yarn to install dependencies instead of npm.\\x1b[0m'); process.exit(1); }\"",
         "build": "tsc && bash build.sh"
     },
     "dependencies": {}
