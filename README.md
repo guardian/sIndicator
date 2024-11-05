@@ -16,13 +16,13 @@ Either use `web-ext run`
 Or install manually into your browser using debug mode
 
 ## Building and signing the web extension
-You will need to update the version in `manifest.json` as part of your PR
+The version in `manifest.json` is a placeholder: it does not need to be updated manually as it will be replaced by the GitHub Actions workflow
 
 Repository secrets have been added for WEB_EXT_API_KEY and WEB_EXT_API_SECRET
 
 If these need to be updated, [create](https://accounts.firefox.com/) a mozilla account and request an API key
 
-A GitHub action is activated on merging a PR and uses [web-ext](https://github.com/mozilla/web-ext) to build and sign the web extension
+A GitHub action is activated on Release and uses [web-ext](https://github.com/mozilla/web-ext) to build and sign the web extension for use with Mozilla Firefox
 
 A zip file containing the signed xpi can be accessed from the Artifacts for the action
 

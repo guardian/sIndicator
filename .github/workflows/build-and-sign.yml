@@ -1,9 +1,8 @@
 name: Build and Sign Web Extension
 
 on:
-  push:
-    branches:
-      - main
+  release:
+    types: [published]
 
 jobs:
   build-and-sign:
@@ -22,6 +21,21 @@ jobs:
 
     - name: Install dependencies
       run: yarn install
+
+    - name: Install jq if not already installed
+      run: |
+        if ! command -v jq &> /dev/null; then
+          sudo apt-get update && sudo apt-get install -y jq
+        fi
+
+    - name: Extract version from release tag
+      id: extract_version
+      run: echo "RELEASE_VERSION=${GITHUB_REF#refs/tags/}" >> $GITHUB_ENV
+
+    - name: Update manifest.json with version
+      run: |
+        jq --arg version "$RELEASE_VERSION" '.version = $version' manifest.json > manifest.tmp.json
+        mv manifest.tmp.json manifest.json
 
     - name: Build the project
       run: yarn build
