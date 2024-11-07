@@ -1,4 +1,4 @@
-name: Build and Sign Web Extension
+name: Sign Web Extension
 
 on:
   release:
@@ -11,17 +11,7 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v3
-
-    - name: Set up Node.js
-      uses: actions/setup-node@v3
-      with:
-        node-version: 20.x
-        cache: "yarn"
-        cache-dependency-path: yarn.lock
-
-    - name: Install dependencies
-      run: yarn install
-
+      
     - name: Install jq if not already installed
       run: |
         if ! command -v jq &> /dev/null; then
@@ -36,9 +26,6 @@ jobs:
       run: |
         jq --arg version "$RELEASE_VERSION" '.version = $version' manifest.json > manifest.tmp.json
         mv manifest.tmp.json manifest.json
-
-    - name: Build the project
-      run: yarn build
 
     - name: Install web-ext
       run: yarn global add web-ext
