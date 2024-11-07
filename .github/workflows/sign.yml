@@ -5,7 +5,7 @@ on:
     types: [published]
 
 jobs:
-  build-and-sign:
+  sign-extension:
     runs-on: ubuntu-latest
 
     steps:
