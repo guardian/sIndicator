@@ -22,28 +22,32 @@ jobs:
       id: extract_version
       run: echo "RELEASE_VERSION=${GITHUB_REF#refs/tags/}" >> $GITHUB_ENV
 
-    - name: Update manifest.json with version
+    - name: Update Firefox manifest.json with version
       run: |
+        cp src/manifest.firefox.json manifest.json
         jq --arg version "$RELEASE_VERSION" '.version = $version' manifest.json > manifest.tmp.json
         mv manifest.tmp.json manifest.json
 
     - name: Install web-ext
       run: yarn global add web-ext
 
-    - name: Build the extension
+    - name: Build Firefox extension
       run: web-ext build
 
-    - name: Sign the extension
+    - name: Sign Firefox extension
       env:
         WEB_EXT_API_KEY: ${{ secrets.WEB_EXT_API_KEY }}
         WEB_EXT_API_SECRET: ${{ secrets.WEB_EXT_API_SECRET }}
       run: web-ext sign --channel=unlisted --api-key=$WEB_EXT_API_KEY --api-secret=$WEB_EXT_API_SECRET
 
-    - name: Rename signed extension
+    - name: Rename signed Firefox extension
       run: mv web-ext-artifacts/*.xpi web-ext-artifacts/sindicator@the-guardian-com.xpi
 
-    - name: Upload signed extension
+    - name: Upload signed Firefox extension
       uses: actions/upload-artifact@v4
       with:
         name: sindicator-signed-extension
         path: web-ext-artifacts/*.xpi
+
+    - name: Install chrome-webstore-upload-cli
+      run: yarn global add chrome-webstore-upload-cli
