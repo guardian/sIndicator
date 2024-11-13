@@ -16,9 +16,18 @@ Either use `web-ext run`
 Or install manually into your browser using debug mode
 
 ## Building and signing the web extension
-The version in `manifest.json` is a placeholder: it does not need to be updated manually as it will be replaced by the GitHub Actions workflow
+There are two copies of the manifest file:
+- manifest.firefox.json
+- manifest.chrome.json
 
-Repository secrets have been added for WEB_EXT_API_KEY and WEB_EXT_API_SECRET
+As part of the build process for each type of web extension, the appropriate manifest file is copied to `manifest.json`.
+
+The version in the manifest is a placeholder: it does not need to be updated manually as it will be replaced by the GitHub Actions workflow
+
+### Firefox web extension
+Repository secrets have been added for:
+- WEB_EXT_API_KEY
+- WEB_EXT_API_SECRET
 
 If these need to be updated, [create](https://accounts.firefox.com/) a mozilla account and request an API key
 
@@ -26,8 +35,23 @@ A GitHub action is activated on Release and uses [web-ext](https://github.com/mo
 
 A zip file containing the signed xpi can be accessed from the Artifacts for the action
 
+### Chrome web extension
+Repository secrets have been added for:
+- CHROME_CLIENT_ID
+- CHROME_CLIENT_SECRET
+- CHROME_REFRESH_TOKEN
+- CHROME_EXTENSION_ID
+
+If these need to be updated, follow the instructions [here](https://github.com/fregante/chrome-webstore-upload-keys)
+
+A Github action is activated on Release and uses [chrome-webstore-upload](https://github.com/fregante/chrome-webstore-upload-cli) to publish the extension.
+
+The extension will be published to the web store as an Unlisted extension, so that only users who know its url will be able to access it (the visibility is set via the Chrome Web Store dashboard)
 
 ## Installation Process for Syndication Partners
+Note that more sophisticated installation methods are possible and may be considered in the future.
+
+### Firefox
 1. Save the xpi file to your computer
 2. Open Mozilla Firefox
 3. Select the three lines in the top right corner and select 'Add-ons and themes'
@@ -39,7 +63,8 @@ A zip file containing the signed xpi can be accessed from the Artifacts for the 
 9. Add your api key
 10. Now when you navigate to a page on www.theguardian.com a bubble will appear indicating whether or not the page is syndicatable
 
-Note that more sophisticated installation methods are possible and may be considered in the future.
+### Chrome
+To be completed
 
 ------
 

@@ -1,0 +1,30 @@
+{
+    "manifest_version": 2,
+    "name": "sIndicator",
+    "version": "0.0.1", 
+  
+    "description": "Indicates whether an article on theguardian.com is available for syndication.",
+  
+    "icons": {
+      "42": "gu-roundel.png"
+    },
+  
+    "content_scripts": [
+      {
+        "matches": ["*://*.theguardian.com/*"],
+        "css": ["style.css"],
+        "js": ["sindicator.js"]
+      }
+    ],
+    "options_ui": {
+      "page": "options.html"
+    },
+    "permissions": ["storage", "*://content.guardianapis.com/*"],
+    "browser_specific_settings": {
+      "gecko": {
+        "id": "sindicator@guardian.co.uk",
+        "strict_min_version": "58.0"
+      }
+    }
+  }
+  
