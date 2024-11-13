@@ -23,29 +23,26 @@ jobs:
     - name: Install dependencies
       run: yarn install
 
-    - name: Copy Firefox manifest
-      run: cp manifest-firefox.json manifest.json  
+    - name: Prepare for Firefox build
+      run: rm -rf dist/firefox && mkdir -p dist/firefox  
+    
+    - name: Prepare for Chrome build
+      run: rm -rf dist/chrome && mkdir -p dist/chrome
 
-    - name: Build Firefox version
-      run: yarn build
+    - name: Build Firefox and Chrome versions
+      run: yarn build 
 
     - name: Install web-ext
       run: yarn global add web-ext
 
+    - name: Create web-ext artifacts directory
+      run: mkdir -p web-ext-artifacts
+
     - name: Build Firefox extension
-      run: web-ext build
-
-    - name: Prepare for Chrome build
-      run: rm -rf dist/*
-
-    - name: Copy Chrome manifest
-      run: cp manifest-chrome.json manifest.json
-
-    - name: Build Chrome version
-      run: yarn build      
+      run: web-ext build --source-dir dist/firefox
 
     - name: Create Chrome artifacts directory
       run: mkdir -p chrome-artifacts
 
     - name: Build Chrome extension
-      run: zip -r chrome-artifacts/chrome-extension.zip dist
+      run: zip -r chrome-artifacts/chrome-extension.zip dist/chrome
