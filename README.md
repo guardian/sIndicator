@@ -1,3 +1,6 @@
+> [!CAUTION]
+> This repo has been ARCHIVED, since its functionality has been replicated & extended as first class feature in DCR (see https://github.com/guardian/dotcom-rendering/pull/13442 & https://github.com/guardian/reuse-content/pull/129) - this solution avoids the maintenance burden of supporting multiple release processes for different browsers.
+
 # sIndicator
 ## What is sIndicator?
 sIndicator is a web extension distributed individually to syndication partners (i.e. not available through the store) to allow them to determine whether a given piece of content that they are viewing is syndicatable or not.
